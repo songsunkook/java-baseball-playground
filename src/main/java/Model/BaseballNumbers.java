@@ -30,6 +30,7 @@ public class BaseballNumbers {
         return score;
     }
 
+
     private Score containNumber(List<Integer> numbers, int idx) {
         Score score = new Score();
 
@@ -43,7 +44,19 @@ public class BaseballNumbers {
         return score;
     }
 
+    public boolean isContain(List<Integer> numbers, int number){
+        return numbers.contains(number);
+    }
+
     public List<Integer> getNumbers() {
-        return this.numbers;
+        return numbers;
+    }
+
+    public int size(){
+        return numbers.size();
+    }
+
+    public int getMaxLength(){
+        return maxLength;
     }
 }

@@ -1,15 +1,23 @@
 package Service;
 
+import Model.BaseballNumbers;
+import Model.Score;
+import Utils.RandomManager;
+
 import java.util.Scanner;
 
 public class GameService {
+    private Score score = new Score();
+    private BaseballNumbers cpuNumbers = new BaseballNumbers();
+    private BaseballNumbers userNumbers = new BaseballNumbers();
 
-    public void initGame(){
-
+    public void initGame() throws Exception {
+        cpuNumbers = RandomManager.generateCpuNumbers();
+        initRound();
     }
 
-    public void initRound(){
-
+    private void initRound(){
+        score = new Score();
     }
 }
 
@@ -34,40 +42,6 @@ public class NumberBaseballNEEDREFACTOR {
     public void initRound(){
         this.strike = 0;
         this.ball = 0;
-    }
-
-    public void generateComputerNumbers(){
-        int numbers[] = new int[3];
-        for(int i=0; i<3; i++){
-            generateRandom(numbers, i);
-        }
-        this.computerNumbers = numbers.clone();
-    }
-
-    void generateRandom(int numbers[], int idxNow){
-        numbers[idxNow] = rand();
-        checkOverlap(numbers, idxNow);
-    }
-
-    void checkOverlap(int numbers[], int idxNow){
-        boolean overlap = false;
-        for(int i=idxNow; i>0; i--){
-            overlap = checkBeforeNumbers(numbers,idxNow-i,idxNow);
-        }
-        if(overlap)
-            checkOverlap(numbers, idxNow);
-    }
-
-    boolean checkBeforeNumbers(int numbers[], int idx, int idxNow){
-        if(numbers[idx] == numbers[idxNow]) {
-            generateRandom(numbers, idxNow);
-            return true;
-        }
-        return false;
-    }
-
-    int rand(){
-        return (int)(Math.random() * 8 + 1);
     }
 
     public int input(){
