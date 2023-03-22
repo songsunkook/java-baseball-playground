@@ -2,60 +2,24 @@ package Application;
 
 import java.util.Scanner;
 
+//리팩토링 이전 코드들
+//한 메서드씩 리팩토링 후 제거하는 중
 public class NumberBaseballNEEDREFACTOR {
     int inputBigNum;
     public int inputNumbers[], computerNumbers[];
     int strike, ball;
-
-    public NumberBaseballNEEDREFACTOR(){
-        initGame();
-    }
 
     public void initGame(){
         this.strike = 0;
         this.ball = 0;
         this.inputNumbers = new int[3];
         this.computerNumbers = new int[3];
-        generateComputerNumbers();
+        //generateComputerNumbers();
     }
 
     public void initRound(){
         this.strike = 0;
         this.ball = 0;
-    }
-
-    public void generateComputerNumbers(){
-        int numbers[] = new int[3];
-        for(int i=0; i<3; i++){
-            generateRandom(numbers, i);
-        }
-        this.computerNumbers = numbers.clone();
-    }
-
-    void generateRandom(int numbers[], int idxNow){
-        numbers[idxNow] = rand();
-        checkOverlap(numbers, idxNow);
-    }
-
-    void checkOverlap(int numbers[], int idxNow){
-        boolean overlap = false;
-        for(int i=idxNow; i>0; i--){
-            overlap = checkBeforeNumbers(numbers,idxNow-i,idxNow);
-        }
-        if(overlap)
-            checkOverlap(numbers, idxNow);
-    }
-
-    boolean checkBeforeNumbers(int numbers[], int idx, int idxNow){
-        if(numbers[idx] == numbers[idxNow]) {
-            generateRandom(numbers, idxNow);
-            return true;
-        }
-        return false;
-    }
-
-    int rand(){
-        return (int)(Math.random() * 8 + 1);
     }
 
     public int input(){
@@ -71,31 +35,6 @@ public class NumberBaseballNEEDREFACTOR {
         this.inputNumbers[2] = originalNumber / 1   % 10;
 
         return this.inputNumbers;
-    }
-
-    public void checkScore(){
-        for(int i=0; i<3; i++){
-            repeatThree(i);
-        }
-    }
-
-    void repeatThree(int idxCom){
-        for(int i=0; i<3; i++){
-            checkEquals(idxCom,i);
-        }
-    }
-
-    void checkEquals(int idxCom, int idxUser){
-        if(this.computerNumbers[idxCom] == this.inputNumbers[idxUser]){
-            judgeStrikeOrBall(idxCom, idxUser);
-        }
-    }
-
-    void judgeStrikeOrBall(int idxCom, int idxUser){
-        if(idxCom == idxUser)
-            this.strike++;
-        if(idxCom != idxUser)
-            this.ball++;
     }
 
     public String getResult(){

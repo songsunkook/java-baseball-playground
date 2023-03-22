@@ -4,9 +4,7 @@ import Model.BaseballNumbers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class RandomManagerTest {
+public class RandomManagerTest {
 
     @Test
     @DisplayName("랜덤 CPU 난수 생성")

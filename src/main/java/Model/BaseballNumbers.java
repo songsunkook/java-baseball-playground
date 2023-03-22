@@ -14,9 +14,9 @@ public class BaseballNumbers {
         this.numbers.add(num);
     }
 
-    public void addAllNumber(List<Integer> numbers) throws Exception {
+    public void addAllNumber(List<Integer> numbers) {
         if (this.numbers.size() > 0)
-            throw new Exception(overMaxLengthMessage);
+            this.numbers = new ArrayList<>();
         this.numbers.addAll(numbers);
     }
 

@@ -3,8 +3,12 @@ package Service;
 import Model.BaseballNumbers;
 import Model.Score;
 import Utils.RandomManager;
+import View.InputView;
+import View.OutputView;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class GameService {
     private Score score = new Score();
@@ -17,7 +21,27 @@ public class GameService {
     }
 
     private void initRound(){
-        score = new Score();
+        OutputView.printEnterNewNumbersMessage();
+        userNumbers.addAllNumber(enterUserNumbers());
+
+        playGame();
+    }
+
+    private void playGame(){
+
+    }
+
+    private List<Integer> enterUserNumbers(){
+        int bigNumber = InputView.getInt();
+        List<Integer> numbers = new ArrayList<>();
+
+        while(bigNumber > 0){
+            numbers.add(bigNumber % 10);
+            bigNumber /= 10;
+        }
+        Collections.reverse(numbers);
+
+        return numbers;
     }
 }
 
