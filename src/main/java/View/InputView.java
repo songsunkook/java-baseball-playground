@@ -6,7 +6,8 @@ public class InputView {
     private static Scanner scanner = new Scanner(System.in);
 
     public static int getInt(){
-        int result = Integer.parseInt(scanner.nextLine());
+        int result = scanner.nextInt();
+        scanner.nextLine();
         return result;
     }
 }
