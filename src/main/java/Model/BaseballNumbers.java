@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseballNumbers {
-    private List<Integer> numbers = new ArrayList<>();
-    private static final int maxLength = 3;
     private static final String overMaxLengthMessage = "숫자 개수 한계치 초과";
+    private static final int maxLength = 3;
+
+    private List<Integer> numbers = new ArrayList<>();
 
     public void addNumber(int num) throws Exception {
-        if (this.numbers.size() == maxLength)
+        if (this.numbers.size() == maxLength) {
             throw new Exception(overMaxLengthMessage);
+        }
         this.numbers.add(num);
     }
 
     public void addAllNumber(List<Integer> numbers) {
-        if (this.numbers.size() > 0)
+        if (this.numbers.size() > 0) {
             this.numbers = new ArrayList<>();
+        }
         this.numbers.addAll(numbers);
     }
 
@@ -30,21 +33,22 @@ public class BaseballNumbers {
         return score;
     }
 
-
     private Score containNumber(List<Integer> numbers, int idx) {
         Score score = new Score();
 
         if (this.numbers.contains(numbers.get(idx))) {
-            if (this.numbers.get(idx) == numbers.get(idx))
+            if (this.numbers.get(idx) == numbers.get(idx)) {
                 score.addStrike();
-            else
+            }
+            if (this.numbers.get(idx) != numbers.get(idx)) {
                 score.addBall();
+            }
         }
 
         return score;
     }
 
-    public boolean isContain(List<Integer> numbers, int number){
+    public boolean isContain(List<Integer> numbers, int number) {
         return numbers.contains(number);
     }
 
@@ -52,11 +56,11 @@ public class BaseballNumbers {
         return numbers;
     }
 
-    public int size(){
+    public int size() {
         return numbers.size();
     }
 
-    public int getMaxLength(){
+    public int getMaxLength() {
         return maxLength;
     }
 }

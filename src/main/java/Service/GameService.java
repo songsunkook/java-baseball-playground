@@ -1,5 +1,6 @@
 package Service;
 
+import Controller.GameController;
 import Model.BaseballNumbers;
 import Model.Score;
 import Utils.RandomManager;
@@ -22,18 +23,21 @@ public class GameService {
     }
 
     private void initRound() throws Exception {
-        OutputView.printEnterNewNumbersMessage();
+        GameController.printEnterNewNumbersMessage();
         userNumbers.addAllNumber(enterUserNumbers());
 
         playGame();
     }
 
     private void playGame() throws Exception {
-        if(!checkThreeStrike())
+        if(!checkThreeStrike()) {
             initRound();
+            return;
+        }
 
-        else if(retryGame())
+        if(retryGame()) {
             initGame();
+        }
     }
 
     private boolean checkThreeStrike(){

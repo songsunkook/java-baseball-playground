@@ -4,24 +4,27 @@ public class Score {
     private int strike;
     private int ball;
 
-    public Score(){
+    public Score() {
         this.strike = 0;
         this.ball = 0;
     }
-    public Score(int strike, int ball){
+
+    public Score(int strike, int ball) {
         this.strike = strike;
         this.ball = ball;
     }
 
-    public void addScore(Score score){
+    public void addScore(Score score) {
         this.strike += score.strike;
         this.ball += score.ball;
     }
 
-    public boolean equals(Object obj){
+    @Override
+    public boolean equals(Object obj) {
         Score score = (Score) obj;
-        if(this.strike == score.strike && this.ball == score.ball)
+        if (this.strike == score.strike && this.ball == score.ball) {
             return true;
+        }
         return false;
     }
 
@@ -33,11 +36,11 @@ public class Score {
         return this.ball;
     }
 
-    public void addStrike(){
+    public void addStrike() {
         this.strike++;
     }
 
-    public void addBall(){
+    public void addBall() {
         this.ball++;
     }
 }

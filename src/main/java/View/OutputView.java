@@ -1,16 +1,15 @@
 package View;
 
-import Model.BaseballMessages;
 import Model.Score;
 
 public class OutputView {
 
     public static void printRetryMessage() {
-        System.out.println(BaseballMessages.endMessage);
+        System.out.println(BaseballMessages.END_MESSAGE);
     }
 
     public static void printEnterNewNumbersMessage(){
-        System.out.println(BaseballMessages.enterNumberMessage);
+        System.out.println(BaseballMessages.ENTER_NUMBER_MESSAGE);
     }
 
     public static void printStrikeCountMessage(Score score){
